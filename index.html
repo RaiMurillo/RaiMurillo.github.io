@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rai Murillo — Landing Page Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EDF1F3;
+    --card:#F8FAFB;
+    --ink:#16232E;
+    --steel:#5C6B78;
+    --blue:#3B5BA5;
+    --blue-dark:#2C4680;
+    --yellow:#F2C94C;
+    --line:#C9D3DA;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px),
+      var(--paper);
+    background-size: 42px 42px, 42px 42px, auto;
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px; margin:0 auto; padding:0 24px;}
+  .mono{font-family:'JetBrains Mono', monospace;}
+
+  a{color:inherit;}
+
+  /* ---------- Nav ---------- */
+  nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:26px 0;
+  }
+  nav .brand{
+    font-family:'JetBrains Mono', monospace; font-weight:700; font-size:15px;
+    display:flex; align-items:center; gap:8px;
+  }
+  nav .brand .dot{width:8px; height:8px; border-radius:50%; background:var(--blue);}
+  nav a.ghlink{
+    font-family:'JetBrains Mono', monospace; font-size:13px;
+    text-decoration:none; border:1.4px solid var(--ink); border-radius:20px;
+    padding:8px 16px; transition:background 0.15s ease, color 0.15s ease;
+  }
+  nav a.ghlink:hover{background:var(--ink); color:var(--paper);}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:64px 0 56px;}
+  .hero .eyebrow{
+    font-family:'JetBrains Mono', monospace; font-size:12.5px; color:var(--blue);
+    text-transform:uppercase; letter-spacing:0.08em; margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .hero .eyebrow::before{content:"//"; color:var(--steel);}
+  .hero h1{
+    font-family:'JetBrains Mono', monospace; font-weight:700;
+    font-size:clamp(32px,5vw,52px); line-height:1.15; margin-bottom:22px;
+    max-width:16ch;
+  }
+  .hero h1 .hl{background:var(--yellow); padding:0 6px; box-decoration-break:clone;}
+  .hero p.lede{
+    font-size:17px; color:var(--steel); max-width:56ch; margin-bottom:0;
+  }
+
+  /* ---------- Section head ---------- */
+  .section-head{padding:8px 0 30px;}
+  .section-head .eyebrow{
+    font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--blue);
+    text-transform:uppercase; letter-spacing:0.08em; margin-bottom:10px;
+  }
+  .section-head h2{
+    font-family:'JetBrains Mono', monospace; font-weight:700; font-size:clamp(22px,2.6vw,30px);
+  }
+
+  /* ---------- Browser-window project card (signature element) ---------- */
+  .projects{padding:20px 0 64px; display:flex; flex-direction:column; gap:28px;}
+  .browser{
+    background:var(--card); border:1.4px solid var(--ink); border-radius:8px;
+    overflow:hidden; box-shadow:4px 4px 0 var(--ink);
+  }
+  .browser-bar{
+    display:flex; align-items:center; gap:10px;
+    background:var(--ink); padding:10px 14px;
+  }
+  .browser-dots{display:flex; gap:6px;}
+  .browser-dots span{width:9px; height:9px; border-radius:50%; background:#5C6B78;}
+  .browser-dots span:nth-child(1){background:#E8604C;}
+  .browser-dots span:nth-child(2){background:var(--yellow);}
+  .browser-dots span:nth-child(3){background:#6FBF73;}
+  .browser-url{
+    flex:1; background:#22303C; border-radius:5px; padding:5px 12px;
+    font-family:'JetBrains Mono', monospace; font-size:12px; color:#AEB9C2;
+    overflow:hidden; text-overflow:ellipsis; white-space:nowrap;
+  }
+  .browser-body{
+    padding:26px 28px; display:grid; grid-template-columns:1fr auto; gap:20px; align-items:center;
+  }
+  .browser-body h3{font-family:'JetBrains Mono', monospace; font-size:19px; margin-bottom:8px;}
+  .browser-body p.desc{color:var(--steel); font-size:14.5px; max-width:52ch;}
+  .badge-row{display:flex; gap:8px; margin-top:14px; flex-wrap:wrap;}
+  .badge{
+    font-family:'JetBrains Mono', monospace; font-size:11px; text-transform:uppercase;
+    letter-spacing:0.04em; background:var(--paper); border:1px solid var(--line);
+    padding:5px 10px; border-radius:4px; color:var(--steel);
+  }
+  .repo-link{
+    font-family:'JetBrains Mono', monospace; font-size:13px; font-weight:600;
+    text-decoration:none; background:var(--blue); color:#fff;
+    padding:11px 20px; border-radius:6px; white-space:nowrap;
+    transition:background 0.15s ease;
+  }
+  .repo-link:hover{background:var(--blue-dark);}
+
+  @media (max-width:640px){
+    .browser-body{grid-template-columns:1fr;}
+    .repo-link{justify-self:start;}
+  }
+
+  /* ---------- Approach ---------- */
+  .approach{padding:20px 0 64px; border-top:1.4px solid var(--ink);}
+  .approach-grid{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:30px;
+  }
+  .approach-card{
+    background:var(--card); border:1px solid var(--line); border-radius:8px; padding:22px;
+  }
+  .approach-card .num{
+    font-family:'JetBrains Mono', monospace; font-size:12px; color:var(--blue); margin-bottom:10px;
+  }
+  .approach-card h4{font-family:'JetBrains Mono', monospace; font-size:16px; margin-bottom:8px;}
+  .approach-card p{font-size:13.5px; color:var(--steel);}
+
+  /* ---------- Footer ---------- */
+  footer{
+    border-top:1.4px solid var(--ink); padding:34px 0 48px;
+    display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
+  }
+  footer .mono{font-size:12.5px; color:var(--steel);}
+  footer a.ghlink2{
+    font-family:'JetBrains Mono', monospace; font-size:13px; text-decoration:none;
+    border-bottom:1.4px solid var(--ink);
+  }
+
+  /* ---------- Live preview toggle + frame ---------- */
+  .preview-toggle{
+    font-family:'JetBrains Mono', monospace; font-size:12.5px; font-weight:600;
+    background:none; color:var(--blue); border:1.4px solid var(--blue); border-radius:6px;
+    padding:10px 18px; cursor:pointer; white-space:nowrap; transition:background 0.15s ease, color 0.15s ease;
+  }
+  .preview-toggle:hover{background:var(--blue); color:#fff;}
+  .preview-toggle.active{background:var(--ink); color:var(--paper); border-color:var(--ink);}
+  .cta-row{display:flex; gap:10px; flex-wrap:wrap;}
+  .preview-frame-wrap{
+    display:none; border-top:1.4px solid var(--ink); background:#fff;
+  }
+  .preview-frame-wrap.open{display:block;}
+  .preview-frame-wrap iframe{
+    width:100%; height:720px; border:none; display:block;
+  }
+
+  @media (max-width:820px){
+    .approach-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <nav>
+    <div class="brand"><span class="dot"></span> RAI MURILLO</div>
+    <a class="ghlink" href="https://github.com/RaiMurillo" target="_blank" rel="noopener">github.com/RaiMurillo</a>
+  </nav>
+
+  <header class="hero">
+    <div class="eyebrow">portfolio</div>
+    <h1>Landing pages built against <span class="hl">real</span> live stores.</h1>
+    <p class="lede">Three product landing pages, each verified against a live store listing before a line of copy was written — real pricing, real reviews, real photography. Browse the source on GitHub below.</p>
+  </header>
+
+  <section class="section-head">
+    <div class="eyebrow">// repositories</div>
+    <h2>3 public repos</h2>
+  </section>
+
+  <section class="projects">
+
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">raimurillo.github.io/gymshark-landing-page/</div>
+      </div>
+      <div class="browser-body">
+        <div>
+          <h3>gymshark-landing-page</h3>
+          <p class="desc">Women/Men Gym Accesories</p>
+          <div class="badge-row">
+            <span class="badge">HTML</span>
+            <span class="badge">Interactive</span>
+            <span class="badge">Live</span>
+          </div>
+        </div>
+        <div class="cta-row">
+          <a class="repo-link" href="https://raimurillo.github.io/gymshark-landing-page/" target="_blank" rel="noopener">Visit Live Site →</a>
+          <button class="preview-toggle" data-target="preview-gymshark" data-src="https://raimurillo.github.io/gymshark-landing-page/">Preview Here</button>
+        </div>
+      </div>
+      <div class="preview-frame-wrap" id="preview-gymshark">
+        <iframe loading="lazy" title="Gymshark landing page live preview"></iframe>
+      </div>
+    </div>
+
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">raimurillo.github.io/herringbone-necklace-landing-page/</div>
+      </div>
+      <div class="browser-body">
+        <div>
+          <h3>herringbone-necklace-landing-page</h3>
+          <p class="desc">Women-necklace</p>
+          <div class="badge-row">
+            <span class="badge">HTML</span>
+            <span class="badge">Interactive</span>
+            <span class="badge">Enable Pages to go live</span>
+          </div>
+        </div>
+        <div class="cta-row">
+          <a class="repo-link" href="https://raimurillo.github.io/herringbone-necklace-landing-page/" target="_blank" rel="noopener">Visit Live Site →</a>
+          <button class="preview-toggle" data-target="preview-necklace" data-src="https://raimurillo.github.io/herringbone-necklace-landing-page/">Preview Here</button>
+        </div>
+      </div>
+      <div class="preview-frame-wrap" id="preview-necklace">
+        <iframe loading="lazy" title="Herringbone necklace landing page live preview"></iframe>
+      </div>
+    </div>
+
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">raimurillo.github.io/rare-beauty-lip-oil-stick-landing-page/</div>
+      </div>
+      <div class="browser-body">
+        <div>
+          <h3>rare-beauty-lip-oil-stick-landing-page</h3>
+          <p class="desc">Soft Pinch Lip Oil Stick</p>
+          <div class="badge-row">
+            <span class="badge">HTML</span>
+            <span class="badge">Real photography</span>
+            <span class="badge">Enable Pages to go live</span>
+          </div>
+        </div>
+        <div class="cta-row">
+          <a class="repo-link" href="https://raimurillo.github.io/rare-beauty-lip-oil-stick-landing-page/" target="_blank" rel="noopener">Visit Live Site →</a>
+          <button class="preview-toggle" data-target="preview-lipstick" data-src="https://raimurillo.github.io/rare-beauty-lip-oil-stick-landing-page/">Preview Here</button>
+        </div>
+      </div>
+      <div class="preview-frame-wrap" id="preview-lipstick">
+        <iframe loading="lazy" title="Rare Beauty lip oil stick landing page live preview"></iframe>
+      </div>
+    </div>
+
+  </section>
+
+  <section class="approach">
+    <div class="section-head" style="padding-bottom:0;">
+      <div class="eyebrow">// approach</div>
+      <h2>What's consistent across all three</h2>
+    </div>
+    <div class="approach-grid">
+      <div class="approach-card">
+        <div class="num mono">01</div>
+        <h4>Verify before writing</h4>
+        <p>Pricing, ratings, materials, and claims are pulled from the live product listing first — nothing is asserted that isn't on the actual page.</p>
+      </div>
+      <div class="approach-card">
+        <div class="num mono">02</div>
+        <h4>Real photography</h4>
+        <p>Hero and detail images come from the brand's own CDN, not stock substitutes or generated art standing in for the product.</p>
+      </div>
+      <div class="approach-card">
+        <div class="num mono">03</div>
+        <h4>Interactive by default</h4>
+        <p>Shade pickers, colorway swatches, and lightboxes are built in vanilla JS — no framework dependency, plain HTML/CSS/JS throughout.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="mono">3 public repositories · HTML · Hosted on GitHub Pages</div>
+    <a class="ghlink2" href="https://github.com/RaiMurillo?tab=repositories" target="_blank" rel="noopener">See all repositories on GitHub →</a>
+  </footer>
+</div>
+
+<script>
+  document.querySelectorAll('.preview-toggle').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var wrap = document.getElementById(btn.getAttribute('data-target'));
+      var isOpen = wrap.classList.contains('open');
+      if (isOpen) {
+        wrap.classList.remove('open');
+        btn.classList.remove('active');
+        btn.textContent = 'View Live Preview';
+      } else {
+        var iframe = wrap.querySelector('iframe');
+        if (!iframe.getAttribute('src')) {
+          iframe.setAttribute('src', btn.getAttribute('data-src'));
+        }
+        wrap.classList.add('open');
+        btn.classList.add('active');
+        btn.textContent = 'Hide Preview';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
