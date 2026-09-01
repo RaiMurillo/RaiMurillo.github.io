@@ -118,6 +118,14 @@
   }
   .repo-link:hover{background:var(--blue-dark);}
 
+  .variant-links{
+    display:flex; gap:16px; flex-wrap:wrap; margin-top:14px;
+    font-family:'JetBrains Mono', monospace; font-size:12px;
+  }
+  .variant-links a{color:var(--blue); text-decoration:underline; text-underline-offset:2px;}
+  .variant-links a:hover{color:var(--blue-dark);}
+  .variant-links .label{color:var(--steel);}
+
   @media (max-width:640px){
     .browser-body{grid-template-columns:1fr;}
     .repo-link{justify-self:start;}
@@ -181,15 +189,46 @@
   <header class="hero">
     <div class="eyebrow">portfolio</div>
     <h1>Landing pages built against <span class="hl">real</span> live stores.</h1>
-    <p class="lede">Three product landing pages, each verified against a live store listing before a line of copy was written — real pricing, real reviews, real photography. Browse the source on GitHub below.</p>
+    <p class="lede">Four product landing pages, each verified against a live store listing before a line of copy was written — real pricing, real reviews, real photography. Browse the source on GitHub below.</p>
   </header>
 
   <section class="section-head">
     <div class="eyebrow">// repositories</div>
-    <h2>3 public repos</h2>
+    <h2>4 public repos</h2>
   </section>
 
   <section class="projects">
+
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="browser-dots"><span></span><span></span><span></span></div>
+        <div class="browser-url">raimurillo.github.io/lumivera-bakuchiol-serum-landing-page/</div>
+      </div>
+      <div class="browser-body">
+        <div>
+          <h3>lumivera-bakuchiol-serum-landing-page</h3>
+          <p class="desc">Bakuchiol Renewal Serum — one winning ad angle built out as three page formats: advertorial, listicle, and PDP</p>
+          <div class="badge-row">
+            <span class="badge">HTML</span>
+            <span class="badge">Advertorial + Listicle + PDP</span>
+            <span class="badge">Live</span>
+          </div>
+          <div class="variant-links">
+            <span class="label">Variants:</span>
+            <a href="https://raimurillo.github.io/lumivera-bakuchiol-serum-landing-page/index.html" target="_blank" rel="noopener">Advertorial</a>
+            <a href="https://raimurillo.github.io/lumivera-bakuchiol-serum-landing-page/listicle.html" target="_blank" rel="noopener">Listicle</a>
+            <a href="https://raimurillo.github.io/lumivera-bakuchiol-serum-landing-page/pdp.html" target="_blank" rel="noopener">PDP</a>
+          </div>
+        </div>
+        <div class="cta-row">
+          <a class="repo-link" href="https://raimurillo.github.io/lumivera-bakuchiol-serum-landing-page/" target="_blank" rel="noopener">Visit Live Site →</a>
+          <button class="preview-toggle" data-target="preview-lumivera" data-src="https://raimurillo.github.io/lumivera-bakuchiol-serum-landing-page/">Preview Here</button>
+        </div>
+      </div>
+      <div class="preview-frame-wrap" id="preview-lumivera">
+        <iframe loading="lazy" title="Lumivera bakuchiol serum landing page live preview"></iframe>
+      </div>
+    </div>
 
     <div class="browser">
       <div class="browser-bar">
@@ -271,7 +310,7 @@
   <section class="approach">
     <div class="section-head" style="padding-bottom:0;">
       <div class="eyebrow">// approach</div>
-      <h2>What's consistent across all three</h2>
+      <h2>What's consistent across all four</h2>
     </div>
     <div class="approach-grid">
       <div class="approach-card">
@@ -293,7 +332,7 @@
   </section>
 
   <footer>
-    <div class="mono">3 public repositories · HTML · Hosted on GitHub Pages</div>
+    <div class="mono">4 public repositories · HTML · Hosted on GitHub Pages</div>
     <a class="ghlink2" href="https://github.com/RaiMurillo?tab=repositories" target="_blank" rel="noopener">See all repositories on GitHub →</a>
   </footer>
 </div>
